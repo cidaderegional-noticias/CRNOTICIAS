@@ -29,28 +29,32 @@ body {
 
 /* CAPA */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     background:
         linear-gradient(rgba(39, 38, 38, 0.35), rgba(0,0,0,0.35)),
-        url("fundo.png");
+        url("fundo.png") no-repeat center;
     background-size: cover;
-    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
+    padding: 20px;
 }
 
 /* CONTEÚDO CENTRAL */
 .hero-content img {
     max-width: 220px;
+    width: 100%;
+    height: auto;
 }
 
+/* TÍTULO */
 .titulo {
     margin-top: 15px;
     font-size: 48px;
     font-weight: bold;
+    line-height: 1.1;
 }
 
 .titulo .cidade {
@@ -71,4 +75,56 @@ body {
     font-size: 22px;
     font-style: italic;
     border-radius: 40px;
+}
+
+/* ========================= */
+/* 📱 RESPONSIVO CELULAR */
+/* ========================= */
+@media (max-width: 768px) {
+
+    .top-menu {
+        padding: 10px 0;
+    }
+
+    .top-menu a {
+        margin: 0 10px;
+        font-size: 14px;
+    }
+
+    .hero {
+        min-height: 100vh;
+        padding: 40px 15px;
+    }
+
+    .hero-content img {
+        max-width: 160px;
+    }
+
+    .titulo {
+        font-size: 32px;
+    }
+
+    .faixa {
+        font-size: 16px;
+        padding: 10px 22px;
+    }
+}
+
+/* 📱 CELULARES MUITO PEQUENOS */
+@media (max-width: 480px) {
+
+    .top-menu a {
+        display: inline-block;
+        margin: 6px 8px;
+        font-size: 13px;
+    }
+
+    .titulo {
+        font-size: 26px;
+    }
+
+    .faixa {
+        font-size: 14px;
+        padding: 8px 18px;
+    }
 }
