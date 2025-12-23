@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notícias - Cidade Regional</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background: url(fundo.png) no-repeat center fixed;
+    background-size: cover;
+    color:#333;
+}
+
+/* FUNDO PARA CONTRASTE */
+.overlay{
+    background: rgba(244,246,248,0.96);
+    min-height:100vh;
+}
+
+/* HEADER */
+header{
+    background: linear-gradient(90deg,#0b5ed7,#198754);
+    color:#fff;
+    padding:35px 15px;
+    text-align:center;
+}
+
+header h1{
+    font-size:32px;
+    margin-bottom:6px;
+}
+
+header p{
+    font-size:15px;
+    opacity:0.9;
+}
+
+/* MENU */
+nav{
+    background:#fff;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    padding:14px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+nav a{
+    text-decoration:none;
+    font-weight:bold;
+    color:#0b5ed7;
+    transition:0.2s;
+}
+
+nav a:hover{
+    color:#198754;
+}
+
+/* CONTROLES */
+.controls{
+    max-width:1100px;
+    margin:25px auto 10px;
+    padding:0 15px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.controls input{
+    flex:1;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+.controls button{
+    padding:12px 18px;
+    border:none;
+    border-radius:8px;
+    background:linear-gradient(90deg,#0b5ed7,#198754);
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.controls button:hover{
+    opacity:0.9;
+}
+
+/* CONTAINER */
+.container{
+    max-width:1100px;
+    margin:20px auto;
+    padding:0 15px;
+}
+
+/* NOTÍCIA */
+.noticia{
+    background:#fff;
+    padding:25px;
+    margin-bottom:30px;
+    border-radius:14px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    border-left:6px solid #0b5ed7;
+}
+
+/* IMAGEM */
+.noticia img{
+    width:100%;
+    max-width:800px;
+    height:600px;
+    display:block;
+    background:#eee;
+}
+
+/* TEXTO */
+.noticia h2{
+    font-size:26px;
+    margin-bottom:6px;
+}
+
+.data{
+    font-size:13px;
+    color:#666;
+    margin-bottom:14px;
+}
+
+.noticia p{
+    line-height:1.7;
+    margin-bottom:12px;
+    text-align:justify;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:18px;
+    background:#0b5ed7;
+    color:#fff;
+    margin-top:40px;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+    header h1{
+        font-size:22px;
+    }
+
+    .noticia h2{
+        font-size:18px;
+    }
+
+    nav{
+        flex-wrap:wrap;
+        gap:15px;
+    }
+
+    .controls{
+        flex-direction:column;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="overlay">
+
+<header>
+    <h1>Notícias da Região Norte e Noroeste</h1>
+    <p>Cidade Regional • Informação com credibilidade</p>
+</header>
+
+<nav>
+    <a href="index.html">INÍCIO</a>
+    <a href="noticias.html">NOTÍCIAS</a>
+    <a href="#">SOBRE</a>
+    <a href="#">CONTATO</a>
+</nav>
+
+<div class="controls">
+    <input type="text" id="search" placeholder="Buscar notícia por palavra...">
+    <button onclick="ordenarRecentes()">Mais recentes</button>
+    <button onclick="ordenarAntigas()">Mais antigas</button>
+</div>
+
+<div class="container" id="lista-noticias">
+
+<div class="noticia" data-data="2025-12-22">
+
+    <h2>Suspeito é preso por estupro de vulnerável em Iraí RS</h2>
+    <div class="data">Publicado em 22/12/2025</div>
+    <img src="image1.png" alt="Notícia">
+
+    <p>
+    A Polícia Civil de Iraí cumpriu na tarde desta segunda-feira, 22, mandado de prisão preventiva contra um homem de 59 anos, investigado pela prática do crime de estupro de vulnerável. A prisão é resultado de inquérito instaurado para apurar denúncias de abuso sexual envolvendo uma pessoa menor de idade no município.</p>
+
+    <p>
+    Durante a investigação, foram reunidos elementos probatórios, como laudo pericial e outras evidências que indicam a ocorrência dos abusos atribuídos ao suspeito. Diante da gravidade dos fatos, a Autoridade Policial representou pela prisão preventiva, medida que foi deferida pelo Poder Judiciário. Após os trâmites legais, o homem foi encaminhado ao sistema prisional, onde permanece à disposição da Justiça.</p>
+</div>
+
+</div>
+
+<footer>
+    © 2025 - Cidade Regional
+</footer>
+
+</div>
+
+<script>
+const container=document.getElementById("lista-noticias");
+const noticias=Array.from(container.children);
+
+function ordenarRecentes(){
+    noticias.sort((a,b)=>new Date(b.dataset.data)-new Date(a.dataset.data))
+    .forEach(n=>container.appendChild(n));
+}
+
+function ordenarAntigas(){
+    noticias.sort((a,b)=>new Date(a.dataset.data)-new Date(b.dataset.data))
+    .forEach(n=>container.appendChild(n));
+}
+
+document.getElementById("search").addEventListener("input",function(){
+    const termo=this.value.toLowerCase();
+    noticias.forEach(n=>{
+        n.style.display=n.innerText.toLowerCase().includes(termo)?"block":"none";
+    });
+});
+
+ordenarRecentes();
+</script>
+
+</body>
+</html>

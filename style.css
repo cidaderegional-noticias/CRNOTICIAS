@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #fff;
+}
+
+/* MENU SUPERIOR */
+.top-menu {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.top-menu a {
+    color: white;
+    margin: 0 18px;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* CAPA */
+.hero {
+    height: 100vh;
+    background:
+        linear-gradient(rgba(39, 38, 38, 0.35), rgba(0,0,0,0.35)),
+        url("fundo.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+/* CONTEÚDO CENTRAL */
+.hero-content img {
+    max-width: 220px;
+}
+
+.titulo {
+    margin-top: 15px;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.titulo .cidade {
+    color: #0b5ed7;
+}
+
+.titulo .regional {
+    color: #198754;
+}
+
+/* FAIXA */
+.faixa {
+    margin-top: 30px;
+    display: inline-block;
+    padding: 12px 30px;
+    background: #e6dcc6;
+    color: #2f4f4f;
+    font-size: 22px;
+    font-style: italic;
+    border-radius: 40px;
+}
